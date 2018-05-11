@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PointMall.iml" filepath="$PROJECT_DIR$/PointMall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fastjd/fastjd.iml" filepath="$PROJECT_DIR$/fastjd/fastjd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/services.iml" filepath="$PROJECT_DIR$/services/services.iml" />
+    </modules>
+  </component>
+</project>

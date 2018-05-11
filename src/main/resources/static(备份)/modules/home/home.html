@@ -1,0 +1,174 @@
+<div class="app-container" ng-controller="HomeController">
+    <div class="navbar fixed-top navbar_home">
+        <img class="top_logo" src="http://www.fd30.cn/demo7/h5/image/logo.png" />
+        <div class="search" ng-click="touchSearch()">
+            <a href="/#/search"><img class="search-icon" src="http://www.fd30.cn/demo7/h5/image/ind-search.png" /><span class="search-text">请输入您要搜索的商品</span></a>
+        </div>
+        <a href="/#/profile" class="profile"><img src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/profile.png" /></a>
+    </div>
+
+    <div class="web_body" id="fd_myID">
+        <div class="fixed_nv_top"></div>
+        <ul class="fixed_nv">
+            <li><a href="http://www.fd30.cn/demo7/h5">首页</a></li>
+            <li ng-repeat="category in categories track by $index"><a class="" href="javascript:;" hreflang="">{{category.name}}</a></li>
+        </ul>
+        <div class="clear0"></div>
+        <script>
+            $(function () {
+                $(".fixed_nv a").click(function () {
+                    var typeh = $(this).attr("hreflang");
+                    $("#fd_myID").load(typeh);
+                });
+
+            })
+        </script>
+        <script>$(function () {
+            $(".pic img").each(function (i) {
+                var str = $(this).attr("src");
+                if (str.indexOf("201709") >= 0 || str.indexOf("201710") >= 0) {
+                    var Newstr = str.replace("images", "../demo7/images");
+                    $(this).attr('src', Newstr);
+
+                }
+                else {
+                    var Newstr = str.replace("images", "../demo1/images");
+                    $(this).attr('src', Newstr);
+
+                }
+
+            });
+        });
+        </script>
+
+        <div class="slideBox" id="slideBox">
+            <div class="bd">
+                <div class="tempWrap">
+                    <ul>
+                        <li ng-repeat="banner in banners" class="li"><a class="a_" title="a-c1" href={{banner.link}} target="_blank"><img
+                                src={{banner.imageUrl}} width="640" height="250" border="0" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="hd">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <ul class="fd-menu">
+            <li ng-repeat="channel in channels"><a target="_blank" href="{{channel.url}}"><img src="{{channel.iconUrl}}" /></a> </li>
+            <div class="clear0"></div>
+        </ul>
+
+        <div class="ads">
+            <a class="a_" title="h5 小米 d1" href="" target="_blank"><img src="http://www.fd30.cn/demo7/data/afficheimg/1515655047743361443.jpg" width="200" height="200" border="0" /></a>
+            <div class="clear0"></div>
+        </div>
+        <div class="h5_goods">
+            <div class="h5_item" ng-repeat="goods in topSales">
+                <div class="h5_item_p">
+                    <a target="_blank" href="/#/product/?goodsId={{goods.id}}" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="USB转Type-C数据线" class="goodsimg" /></a>
+                    <div class="goods_info">
+                        <div class="goods_name">
+                            <a target="_blank" href="/#/product/?goodsId={{goods.id}}"> {{goods.name}} </a>
+                        </div>
+                        <div class="goods_brief">
+                            {{goods.goodsBrief}}
+                        </div>
+                        <div class="goods_price">
+                            <span class="word_c"> ￥{{goods.retailPrice}} </span>
+                            <del>
+                                {{goods.retailPrice}} 积分
+                            </del>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear0"></div>
+        </div>
+        <div class="ads">
+            <a class="a_" title="h5 小米 d1" href="" target="_blank"><img src="http://www.fd30.cn/demo7/data/afficheimg/1515655047743361443.jpg" width="200" height="200" border="0" /></a>
+            <div class="clear0"></div>
+        </div>
+        <div class="h5_goods">
+            <div class="h5_item" ng-repeat="goods in newArrivals">
+                <div class="h5_item_p">
+                    <a target="_blank" href="/#/product/?goodsId={{goods.id}}" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="{{goods.name}}" class="goodsimg" /></a>
+                    <div class="goods_info">
+                        <div class="goods_name">
+                            <a target="_blank" href="/#/product/?goodsId={{goods.id}}"> {{goods.name}} </a>
+                        </div>
+                        <div class="goods_brief">
+                            {{goods.goodsBrief}}
+                        </div>
+                        <div class="goods_price">
+                            <span class="word_c"> ￥{{goods.retailPrice}} </span>
+                            <del>
+                                {{goods.retailPrice}} 积分
+                            </del>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear0"></div>
+        </div>
+
+        <div ng-repeat="fg in floorsAndGoods">
+            <div class="ads">
+                <a class="a_" title="h5 小米 d1" href="" target="_blank"><img src="{{fg.floor.imageUrl}}" width="200" height="200" border="0" /></a>
+                <div class="clear0"></div>
+            </div>
+            <div class="h5_goods">
+                <div class="h5_item" ng-repeat="goods in fg.goods">
+                    <div class="h5_item_p">
+                        <a target="_blank" href="/#/product/?goodsId={{goods.id}}" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="USB转Type-C数据线" class="goodsimg" /></a>
+                        <div class="goods_info">
+                            <div class="goods_name">
+                                <a target="_blank" href="/#/product/?goodsId={{goods.id}}"> {{goods.name}} </a>
+                            </div>
+                            <div class="goods_brief">
+                                {{goods.goodsBrief}}
+                            </div>
+                            <div class="goods_price">
+                                <span class="word_c"> ￥{{goods.retailPrice}} </span>
+                                <del>
+                                    {{goods.retailPrice}} 积分
+                                </del>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear0"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="tabbar fixed-bottom">
+        <div class="tab" ng-click="goHome()">
+            <a href="/#/home"><img class="tab-icon" src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-home-active.png" /> </a>
+        </div>
+        <div class="tab" ng-click="goCategory()">
+            <a href="/#/catalog"><img class="tab-icon" src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-category-normal.png" /></a>
+        </div>
+        <div class="tab" ng-click="goCart()">
+            <a href="/#/cart"><img class="tab-icon" src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-cart-normal.png" /> </a>
+        </div>
+        <div class="tab" ng-click="goProfile()">
+            <a href="/#/profile"><img class="tab-icon" src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-profile-normal.png" /></a>
+        </div>
+    </div>
+    <div class="clear0"></div>
+    <div class="qq_top">
+        <a class="top" href="#top"><img alt="" src="http://www.fd30.cn/demo8/themes/ec36_01/h5-9/topIcon.png" /></a>
+    </div>
+    <div class="h5_foot">
+        Copyright &copy;2007 - 2018神州数码版权所有
+    </div>
+
+    <script>
+        $(".qq_top .top").click(function () {
+            $('body,html').animate({scrollTop: 0}, 1000);
+        });
+    </script>
+</div>

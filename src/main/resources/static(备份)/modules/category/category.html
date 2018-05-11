@@ -1,0 +1,185 @@
+<div class="app-container" ng-controller="CategoryController">
+    <div class="navbar fixed-top navbar_home">
+        <img class="top_logo" src="images/logo.png"/>
+        <div class="search" ng-click="touchSearch()">
+            <a href="http://www.fd30.cn/demo7/h5/#/search"><img class="search-icon" src="images/ind-search.png"/><span
+                    class="search-text">请输入您要搜索的商品</span></a>
+        </div>
+        <a href="http://www.fd30.cn/demo7/h5/#/profile" class="profile"><img src="images/profile.png"/></a>
+    </div>
+    <div class="web_body" id="fd_myID" style="padding-top:50px;">
+        <div class="cat_lef">
+            <div>
+                <a href="javascript:;" ng-repeat="category in categories track by $index">{{category.name}}</a>
+            </div>
+        </div>
+        <div class="cat_right">
+            <div ng-repeat="categoryGood in categoryGoods" class="cat_item cat_item_{{$index}}">
+                <div class="ct">
+                    <span><b>{{categoryGood.name}}</b></span>
+                </div>
+                <div class="cat_child">
+                    <a ng-repeat="goods in categoryGood.goods" class="at"
+                       href="/#/product/?goodsId={{goods.id}}">
+                        <img src="{{goods.listPicUrl}}" class="logo"/>
+                        {{goods.name}}</a>
+
+                    <div class="clear0"></div>
+                    <a href="javascript:;" hreflang="http://www.fd30.cn/demo7/h5_category.php?id=60" class="a_pd">查看更多
+                        &gt;</a>
+                </div>
+                <div class="clear0"></div>
+            </div>
+        </div>
+        <div class="clear0"></div>
+    </div>
+    <style>
+        .clear0 {
+            clear: both;
+        }
+
+        .web_body {
+            background: #fff;
+            position: relative
+        }
+
+        .cat_lef {
+            width: 8rem;
+            position: fixed;
+            background: #FFF;
+            overflow-y: auto;
+            height: 75%;
+        }
+
+        .cat_lef a {
+            display: block;
+            line-height: 3.5rem;
+            height: 3.5rem;
+            text-align: center
+        }
+
+        .cat_lef a.on {
+            color: #FF6B00
+        }
+
+        .cat_right {
+            margin-left: 8rem;
+            background: #fff
+        }
+
+        .cat_item {
+            clear: both;
+            border-left: 1px solid #eee;
+            padding: 1rem;
+        }
+
+        .cat_item .ct {
+            text-align: center;
+            line-height: 4rem;
+        }
+
+        .cat_item .ct span {
+            background: URL(http://www.fd30.cn/demo7/themes/ec36_01/images/dian.gif) center center repeat-x;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .cat_item .ct b {
+            font-weight: normal;
+            background: #fff;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            color: #000;
+            font-size: 1.2rem
+        }
+
+        .cat_child a {
+            display: block;
+            width: 33.33%;
+            text-align: center;
+            line-height: 3rem;
+            float: left;
+            margin-top: 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .cat_child a img {
+            width: 4rem;
+            height: auto;
+            display: block;
+            margin: auto
+        }
+
+        .cat_child .a_pd {
+            width: 90%;
+            margin: auto;
+            font-size: 1.2rem;
+            float: none;
+            line-height: 3rem;
+            background: #F9F3E3;
+            color: #B7AB95
+        }
+    </style>
+    <script>$(function () {
+        $(".cat_lef a").click(function () {
+            var type = $(this).index();
+            var hf_top = $(".cat_item_" + type).offset().top - 50;
+            $('body,html').animate({scrollTop: hf_top}, 1000);
+        });
+
+        $(".a_pd").click(function () {
+            var typeh = $(this).attr("hreflang");
+            $("#fd_myID").load(typeh);
+        });
+        $('.cat_item').each(function (i) {
+            $(window).scroll(function () {
+                var s_top = $(window).scrollTop();
+                var gg = i + 1;
+                var fi_top = $(".cat_item_" + gg).offset().top - 60;
+                if (s_top > fi_top) {
+
+                    $(".cat_lef a").removeClass("on");
+                    $(".cat_lef a").eq(gg).addClass('on');
+                }
+                if (s_top == 0) {
+                    $(".cat_lef a").removeClass("on");
+                    $(".cat_lef a").eq(0).addClass('on');
+                }
+
+            })
+        });
+        $(".tabbar .tab").eq(1).addClass("active");
+
+        $(".tabbar img").eq(1).attr('src', "http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-category-active.png");
+    })
+
+    </script>
+    <div class="tabbar fixed-bottom">
+        <div class="tab" ng-click="goHome()">
+            <a href="/#/home"><img class="tab-icon" src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-home-normal.png"/>
+            </a>
+        </div>
+        <div class="tab" ng-click="goCategory()">
+            <a href="/#/catalog"><img class="tab-icon"
+                                      src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-category-active.png"/></a>
+        </div>
+        <div class="tab" ng-click="goCart()">
+            <a href="/#/cart"><img class="tab-icon" src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-cart-normal.png"/>
+            </a>
+        </div>
+        <div class="tab" ng-click="goProfile()">
+            <a href="/#/profile"><img class="tab-icon"
+                                      src="http://www.fd30.cn/demo7/themes/ec36_01/h5-7/tab-profile-normal.png"/></a>
+        </div>
+    </div>
+    <div class="clear0"></div>
+    <div class="qq_top">
+        <a class="top" href="#top"><img alt="" src="http://www.fd30.cn/demo8/themes/ec36_01/h5-9/topIcon.png"/></a>
+    </div>
+    <script>
+        $(".qq_top .top").click(function () {
+            $('body,html').animate({scrollTop: 0}, 1000);
+        });
+    </script>
+</div>
