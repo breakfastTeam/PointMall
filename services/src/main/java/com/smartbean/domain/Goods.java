@@ -21,22 +21,26 @@ public class Goods implements Serializable {
   private long sortOrder;
   private long isDelete;
   private long attributeCategory;
-  private double counterPrice;
-  private double extraPrice;
+  private double counterPrice;//柜台价格
+  private double extraPrice;//附加价格
   private long isNew;
   private String goodsUnit;
   private String primaryPicUrl;
   private String listPicUrl;
-  private double retailPrice;
+  private double retailPrice;//零售价格
   private long sellVolume;
   private long primaryProductId;
-  private double unitPrice;
+  private double unitPrice;//单价
   private String promotionDesc;
   private String promotionTag;
-  private double appExclusivePrice;
+  private double appExclusivePrice;//APP独家价格
   private long isAppExclusive;
   private long isLimited;
   private long isHot;
+
+  private Long goodsType;//商品类型  0、实物 1、游戏  3、答题  4、抽奖   5、活动
+  private Long consumeIntegral;//消耗积分
+  private String jumpUrl;//跳转地址
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -309,4 +313,30 @@ public class Goods implements Serializable {
     this.isHot = isHot;
   }
 
+  @Column(name = "goods_type", unique = false, nullable = true, insertable = true, updatable = true)
+  public Long getGoodsType() {
+    return goodsType;
+  }
+
+  public void setGoodsType(Long goodsType) {
+    this.goodsType = goodsType;
+  }
+
+  @Column(name = "consume_integral", unique = false, nullable = true, insertable = true, updatable = true )
+  public Long getConsumeIntegral() {
+    return consumeIntegral;
+  }
+
+  public void setConsumeIntegral(Long consumeIntegral) {
+    this.consumeIntegral = consumeIntegral;
+  }
+
+  @Column(name = "jump_url", unique = false, nullable = true, insertable = true, updatable = true)
+  public String getJumpUrl() {
+    return jumpUrl;
+  }
+
+  public void setJumpUrl(String jumpUrl) {
+    this.jumpUrl = jumpUrl;
+  }
 }

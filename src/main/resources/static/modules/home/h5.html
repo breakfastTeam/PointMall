@@ -1,138 +1,141 @@
 <div class="app-container" ng-controller="HomeController">
     <div id="fd_myID">
-        <div class="web_body">
-            <div class="slideBox" id="slideBox">
-                <div class="bd">
-                    <div class="tempWrap">
-                        <ul>
-                            <li class="li" ng-repeat="ad in ads track by $index">
-                                <a href='{{ad.link}}'>
-                                    <img
-                                    src='{{ad.imageUrl}}' width='640'
-                                    height='250'
-                                    border='0'/>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="hd">
+        <ul class="index_fixed_nv">
+            <li><a href=""><img src="image/icon-score.png" />积分</a><span>19000</span></li>
+            <li><a href=""><img src="image/icon-order.png" />兑换记录</a></li>
+        </ul>
+    </div>
+    <div class="web_body">
+        <div class="slideBox" id="slideBox">
+            <div class="bd">
+                <div class="tempWrap">
                     <ul>
+                        <li class="li" ng-repeat="ad in ads track by $index">
+                            <a href='{{ad.link}}'>
+                                <img
+                                        src='{{ad.imageUrl}}' width='640'
+                                        height='250'
+                                        border='0'/>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
-            <ul class="fd-menu">
-                <li ng-repeat="channel in channels track by $index">
-                    <a href="{{channel.url}}">
-                        <img src="{{channel.iconUrl}}">
-                        <!--{{channel.name}}-->
-                    </a>
-                </li>
-                <div class="clear0"></div>
-            </ul>
+            <div class="hd">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <ul class="fd-menu">
+            <li ng-repeat="channel in channels track by $index">
+                <a href="{{channel.url}}">
+                    <img src="{{channel.iconUrl}}">
+                    <!--{{channel.name}}-->
+                </a>
+            </li>
+            <div class="clear0"></div>
+        </ul>
 
-            <div class="ads ad_2">
-                <div class="ad_t">
-                    <span>热门品牌</span>
-                </div>
-                <a ng-repeat="brand in brands track by $index" href=""><img src="{{brand.appListPicUrl}}" width="355" height="238" border="0" /><span class="ad_name">{{brand.name}}</span><span class="link_man">{{brand.floorPrice}}元起</span></a>
-                <div class="clear0"></div>
+        <div class="ads ad_2">
+            <div class="ad_t">
+                <span>热门品牌</span>
             </div>
-            <div ng-if="newGoods.length>0" class="new_goods_t goods_t">
-                <b>新品首发</b>
-                <span><a href="http://www.fd30.cn/demo10/h5_search.php?intro=new">查看全部 &gt;</a></span>
-            </div>
-            <div class="h5_goods flow_x_goods">
-                <div class="h5_item x_goods" ng-repeat="goods in newGoods track by $index">
-                    <div class="h5_item_p">
-                        <a href="" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="{{goods.name}}" class="goodsimg" /></a>
-                        <div class="goods_info">
-                            <div class="goods_name">
-                                <a href="#/product/?product={{goods.id}}">{{goods.name}}</a>
-                            </div>
-                            <div class="goods_brief">
-                                {{goods.goodsBrief}}
-                            </div>
-                            <div class="goods_price">
-                                <span class="word_c"> 积分：{{goods.retailPrice}} </span>
-                            </div>
+            <a ng-repeat="brand in brands track by $index" href=""><img src="{{brand.appListPicUrl}}" width="355" height="238" border="0" /><span class="ad_name">{{brand.name}}</span><span class="link_man">{{brand.floorPrice}}元起</span></a>
+            <div class="clear0"></div>
+        </div>
+        <div ng-if="newGoods.length>0" class="new_goods_t goods_t">
+            <b>新品首发</b>
+            <span><a href="http://www.fd30.cn/demo10/h5_search.php?intro=new">查看全部 &gt;</a></span>
+        </div>
+        <div class="h5_goods flow_x_goods">
+            <div class="h5_item x_goods" ng-repeat="goods in newGoods track by $index">
+                <div class="h5_item_p">
+                    <a href="" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="{{goods.name}}" class="goodsimg" /></a>
+                    <div class="goods_info">
+                        <div class="goods_name">
+                            <a href="#/product/?product={{goods.id}}">{{goods.name}}</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hot_goods_t goods_t">
-                <b>人气推荐 &middot; 好物精选</b>
-                <span><a href="">查看全部 &gt;</a></span>
-            </div>
-            <div class="h5_goods flow_x_goods">
-                <div class="h5_item x_goods" ng-repeat="goods in topSales track by $index">
-                    <div class="h5_item_p">
-                        <a href="#/product/?product={{goods.id}}" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="{{goods.name}}" class="goodsimg" /></a>
-                        <div class="goods_info">
-                            <div class="goods_name">
-                                <a href="#/product/?product={{goods.id}}"> {{goods.name}} </a>
-                            </div>
-                            <div class="goods_brief">
-                                {{goods.goods_brief}}
-                            </div>
-                            <div class="goods_price">
-                                <span class="word_c"> 积分：{{goods.retailPrice}} </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="promotion_ad ads">
-                <div class="flow_x_goods">
-                    <div class="ad_t">
-                        <span>专题精选</span>
-                    </div>
-                    <a ng-repeat="topic in topics track by $index" href="">
-                        <img src="{{topic.itemPicUrl}}" width="417" height="232" border="0" />
-                        <span class="ad_name">
-                            {{topic.title}}
-                        </span>
-                        <span class="link_man"> {{topic.subtitle}}</span>
-                    </a>
-                    <div class="clear0"></div>
-                </div>
-            </div>
-            <div class="h5_goods" ng-repeat="fg in floorsAndGoods track by $index">
-                <div class="i_t">
-                    {{fg.floor.name}}
-                </div>
-                <div class="h5_item" ng-repeat="goods in fg.goods track by $index">
-                    <div class="h5_item_p">
-                        <a href="" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="{{goods.name}}" class="goodsimg" /></a>
-                        <div class="goods_brief  brief_bg">
+                        <div class="goods_brief">
                             {{goods.goodsBrief}}
                         </div>
-                        <div class="goods_info">
-                            <div class="goods_name">
-                                <a href="#/product/?product={{goods.id}}">{{goods.name}} </a>
-                            </div>
-                            <div class="goods_price">
-                                <span class="word_c"> 积分：{{goods.retailPrice}} </span>
-                            </div>
+                        <div class="goods_price">
+                            <span class="word_c"> 积分：{{goods.retailPrice}} </span>
                         </div>
                     </div>
                 </div>
-                <div class="h5_item h5_goods_more">
-                    <div class="h5_item_p">
-                        <img src="http://www.fd30.cn/demo10/themes/ec36_01/h5-7/more.png" />
-                        <a href="javascript:;" hreflang="60" class="hreflang">更多{{floor.name}}好物<span></span></a>
+            </div>
+        </div>
+
+        <div class="hot_goods_t goods_t">
+            <b>人气推荐 &middot; 好物精选</b>
+            <span><a href="">查看全部 &gt;</a></span>
+        </div>
+        <div class="h5_goods flow_x_goods">
+            <div class="h5_item x_goods" ng-repeat="goods in topSales track by $index">
+                <div class="h5_item_p">
+                    <a href="#/product/?product={{goods.id}}" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="{{goods.name}}" class="goodsimg" /></a>
+                    <div class="goods_info">
+                        <div class="goods_name">
+                            <a href="#/product/?product={{goods.id}}"> {{goods.name}} </a>
+                        </div>
+                        <div class="goods_brief">
+                            {{goods.goods_brief}}
+                        </div>
+                        <div class="goods_price">
+                            <span class="word_c"> 积分：{{goods.retailPrice}} </span>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="promotion_ad ads">
+            <div class="flow_x_goods">
+                <div class="ad_t">
+                    <span>专题精选</span>
+                </div>
+                <a ng-repeat="topic in topics track by $index" href="">
+                    <img src="{{topic.itemPicUrl}}" width="417" height="232" border="0" />
+                    <span class="ad_name">
+                            {{topic.title}}
+                        </span>
+                    <span class="link_man"> {{topic.subtitle}}</span>
+                </a>
                 <div class="clear0"></div>
             </div>
         </div>
+        <div class="h5_goods" ng-repeat="fg in floorsAndGoods track by $index">
+            <div class="i_t">
+                {{fg.floor.name}}
+            </div>
+            <div class="h5_item" ng-repeat="goods in fg.goods track by $index">
+                <div class="h5_item_p">
+                    <a href="#/product/?product={{goods.id}}" class="pic"><img src="{{goods.listPicUrl}}" width="220" height="220" alt="{{goods.name}}" class="goodsimg" /></a>
+                    <div class="goods_brief  brief_bg">
+                        {{goods.goodsBrief}}
+                    </div>
+                    <div class="goods_info">
+                        <div class="goods_name">
+                            <a href="#/product/?product={{goods.id}}">{{goods.name}} </a>
+                        </div>
+                        <div class="goods_price">
+                            <span class="word_c"> 积分：{{goods.retailPrice}} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h5_item h5_goods_more">
+                <div class="h5_item_p">
+                    <img src="image/more.png" />
+                    <a href="javascript:;" hreflang="60" class="hreflang">更多{{floor.name}}好物<span></span></a>
+                </div>
+            </div>
+            <div class="clear0"></div>
+        </div>
     </div>
 
-
-    <div class="tabbar fixed-bottom">
+    <!--<div class="tabbar fixed-bottom">
         <div class="tab" ng-click="goHome()">
             <img class="tab-icon" src="image/tab-home-normal.png"/>
         </div>
@@ -146,7 +149,7 @@
         <div class="tab active" ng-click="goProfile()">
             <img class="tab-icon" src="image/tab-profile-normal.png"/>
         </div>
-    </div>
+    </div>-->
     <div class="clear0"></div>
     <div class="qq_top">
         <a class="top" href="#top"><img alt="" src="http://www.fd30.cn/demo8/themes/ec36_01/h5-9/topIcon.png" /></a>
